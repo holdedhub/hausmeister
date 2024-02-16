@@ -14,11 +14,11 @@ jobs:
         with:
           node-version: lts
       - run: npm ci
-      - env:
-        HM_SLACK_BEARER_TOKEN: ${{ secrets.SLACK_BEARER_TOKEN }}
-        HM_SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
-        HM_CHANNEL_REGEX: "^temp[-_].*"
-        HM_LAST_MESSAGE_MAX_AGE: "30d"
-        HM_ARCHIVE_CHANNELS: "true"
-        HM_SEND_MESSAGE: "true"
-      run: node index.js
+      - run: node index.js
+        env:
+          HM_SLACK_BEARER_TOKEN: ${{ secrets.SLACK_BEARER_TOKEN }}
+          HM_SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
+          HM_CHANNEL_REGEX: "^temp[-_].*"
+          HM_LAST_MESSAGE_MAX_AGE: "30d"
+          HM_ARCHIVE_CHANNELS: "true"
+          HM_SEND_MESSAGE: "true"
