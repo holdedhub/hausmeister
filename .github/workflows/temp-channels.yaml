@@ -1,0 +1,25 @@
+name: Temp Channels
+
+on:
+  schedule:
+  - cron: "1 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  run:
+  runs-on: ubuntu-latest
+
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+    with:
+      node-version: lts
+    - run: npm ci
+    - env:
+      HM_SLACK_BEARER_TOKEN: ${{ secrets.SLACK_BEARER_TOKEN }}
+      HM_SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
+      HM_CHANNEL_REGEX: "^temp[-_].*"
+      HM_LAST_MESSAGE_MAX_AGE: "30d"
+      HM_ARCHIVE_CHANNELS: "true"
+      HM_SEND_MESSAGE: "true"
+    run: node index.js
