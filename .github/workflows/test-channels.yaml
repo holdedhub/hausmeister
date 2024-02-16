@@ -1,8 +1,8 @@
-name: archive-temp-channels
+name: archive-test-channels
 
 on:
   schedule:
-    - cron: "0 4 * * MON"
+    - cron: "0 3 * * MON"
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
         env:
           HM_SLACK_BEARER_TOKEN: ${{ secrets.SLACK_BEARER_TOKEN }}
           HM_SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
-          HM_CHANNEL_REGEX: "^temp[-_].*"
+          HM_CHANNEL_REGEX: ".*test.*"
           HM_LAST_MESSAGE_MAX_AGE: "30d"
           HM_ARCHIVE_CHANNELS: "true"
           HM_SEND_MESSAGE: "true"
