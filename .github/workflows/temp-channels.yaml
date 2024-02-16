@@ -10,8 +10,8 @@ jobs:
   steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
-    with:
-      node-version: lts
+      with:
+        node-version: lts
     - run: npm ci
     - env:
       HM_SLACK_BEARER_TOKEN: ${{ secrets.SLACK_BEARER_TOKEN }}
@@ -20,4 +20,4 @@ jobs:
       HM_LAST_MESSAGE_MAX_AGE: "30d"
       HM_ARCHIVE_CHANNELS: "true"
       HM_SEND_MESSAGE: "true"
-    run: node index.js
+    - run: node index.js
