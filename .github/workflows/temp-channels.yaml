@@ -2,7 +2,7 @@ name: archive-temp-channels
 
 on:
   schedule:
-  - cron: "1 0 * * *"
+    - cron: "1 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -21,4 +21,4 @@ jobs:
         HM_LAST_MESSAGE_MAX_AGE: "30d"
         HM_ARCHIVE_CHANNELS: "true"
         HM_SEND_MESSAGE: "true"
-      - run: node index.js
+      run: node index.js
